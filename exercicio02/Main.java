@@ -5,26 +5,36 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner leitor = new Scanner(System.in);
-        List<Livro> teste = new ArrayList<Livro>();
+        List<Livro> biblioteca = new ArrayList<Livro>();
 
         String resposta;
-        int quantidade = 0;
-        Livro livro;
 
         do {
-            livro = new Livro();
-            livro.lerDados();
+            System.out.println(">> Armazenando novo livro");
 
-            System.out.print("Deseja continuar armazenado? (n/s): ");
+            System.out.print("Qual é o titulo do livro? ");
+            String titulo = leitor.nextLine();
+        
+            System.out.print("Qual é o autor do livro? ");
+            String autor = leitor.nextLine();
+
+            System.out.print("Qual é o ano do livro? ");
+            int ano = leitor.nextInt();
+            leitor.nextLine();
+
+            Livro livro = new Livro(titulo, autor, ano);
+
+            biblioteca.add(livro);
+
+            System.out.print("Deseja continuar armazenando livros na biblioteca? (s/n): ");
             resposta = leitor.nextLine();
-
-            quantidade++;
-            
         } while (!resposta.equals("n") && !resposta.equals("N"));
 
-        for (int i = 0; i < quantidade; i++) {
-            System.out.println("Livro (" + (i + 1) + ")");
-            livro.exibirInfo();
+        for (int i = 0; i < biblioteca.size(); i++) {
+            System.out.println("Informações do livro (" + (i + 1) + ")");
+            biblioteca.get(i).exibirInfo();
         }
+
+        System.out.println(">> Saindo da biblioteca...");
     }
 }
