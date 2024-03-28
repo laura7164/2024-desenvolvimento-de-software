@@ -1,60 +1,42 @@
 public class Calculadora {
-    
-    private float numero_1;
-    private float numero_2;
-    private String operacao;
 
-    Calculadora (float numero_1, float numero_2, String operacao) {
-        this.numero_1 = numero_1;
-        this.numero_2 = numero_2;
-        this.operacao = operacao;
+    static float soma (float numero_1, float numero_2) {
+        return numero_1 + numero_2;
     }
 
-    float getNumero1 () {
-        return numero_1;
+    static float subtracao (float numero_1, float numero_2) { 
+        return numero_1 - numero_2;
     }
 
-    float getNumero2 () {
-        return numero_2;
+    static float multiplicacao (float numero_1, float numero_2) {
+        return numero_1 * numero_2;
     }
 
-    String getOperacao() {
-        return operacao;
-    }
-
-    float soma () {
-        return this.getNumero1() + this.getNumero2();
-    }
-
-    float subtracao () { 
-        return this.getNumero1() - this.getNumero2();
-    }
-
-    float multiplicacao () {
-        return this.getNumero1() * this.getNumero2();
-    }
-
-    float divisao () {
-        if (this.getNumero2() == 0) {
-            System.out.println("Não é possível a divisão por 0.");
+    static float divisao (float numero_1, float numero_2) {
+        if (numero_2 == 0) {
+            System.out.println("Não é possível realizar a divisão por 0.");
             return 0;
         } else 
-            return this.getNumero1() / this.getNumero2();
+            return numero_1 / numero_2;
     }
 
-    float calcularOperacao () {
-        switch (this.getOperacao()) {
+    static float calcularOperacao (float numero_1, float numero_2, String operacao) {
+        switch (operacao) {
             case "+":
-                return soma();
+                return Calculadora.soma(numero_1, numero_2);
             case "-":
-                return subtracao();
+                return Calculadora.subtracao(numero_1, numero_2);
             case "*":
-                return multiplicacao();
+                return Calculadora.multiplicacao(numero_1, numero_2);
             case "/":
-                return divisao();
+                return Calculadora.divisao(numero_1, numero_2);
             default: 
                 System.out.println("Operação aritmética inválida.");
                 return 0;
         }
+    }
+
+    static void mostrarResultado (float numero_1, float numero_2, String operacao) {
+        System.out.println("" + numero_1 + " " + operacao + " " + numero_2 + " = " + calcularOperacao(numero_1, numero_2, operacao));
     }
 }
