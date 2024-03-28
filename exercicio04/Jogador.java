@@ -5,40 +5,45 @@ public class Jogador {
     private float pontuacao;
     private int nivel;
 
-    Jogador () {
-        System.out.println(">> Armazenando novo jogador");
+    Jogador (String nome, float pontuacao, int nivel) {
+        this.nome = nome;
+        this.pontuacao = pontuacao;
+        this.nivel = nivel;
+    }
+
+    String getNome () {
+        return nome;
+    }
+
+    float getPontuacao () {
+        return pontuacao;
+    }
+
+    int getNivel () {
+        return nivel;
     }
 
     Scanner leitor = new Scanner(System.in);
-
-    void lerDados () {
-        System.out.print("Digite o nome do jogador: ");
-        nome = leitor.nextLine();
-        System.out.print("Digite a pontuação do jogador: ");
-        pontuacao = leitor.nextFloat();
-        System.out.print("Digite o nivel do jogador: ");
-        nivel = leitor.nextInt();
-    }
-
-    float aumentarPontuacao () {
+    
+    public float aumentarPontuacao () {
         System.out.print("Quantos pontos o jogador ganhou? ");
         float pontosAumentados = leitor.nextFloat();
 
-        return pontuacao = pontuacao + pontosAumentados;
+        return this.pontuacao += pontosAumentados;
     }
 
-    int subirNivel () {
+    public int subirNivel () {
         System.out.print("Quantos niveis o jogador subiu? ");
         int niveisAumentados = leitor.nextInt();
 
-        return nivel = nivel +  niveisAumentados;
+        return this.nivel += niveisAumentados;
     }
 
-    void exibirInfomacao () {
+    public void exibirInfomacao () {
         System.out.println("------------------");
-        System.out.println("Nome: " + nome);
-        System.out.println("Pontuação: " + pontuacao);
-        System.out.println("Nivel: " + nivel);
+        System.out.println("Nome: " + this.getNome());
+        System.out.println("Pontuação: " + this.getPontuacao());
+        System.out.println("Nivel: " + this.getNivel());
         System.out.println("------------------");
     }
 }
