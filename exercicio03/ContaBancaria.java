@@ -5,42 +5,60 @@ public class ContaBancaria {
     private String nomeTitular;
     private float saldo;
 
-    ContaBancaria () {
-        System.out.println(">> Armazenando conta nova");
-    }
-
-    Scanner leitor = new Scanner(System.in);
-
-    void lerDados () {
-        System.out.print("Digite o número da conta: ");
-        numeroConta = leitor.nextLine();
-        System.out.print("Digite o nome do titular: ");
-        nomeTitular = leitor.nextLine();
-        System.out.print("Digite o saldo da conta: ");
-        saldo = leitor.nextFloat();
+    ContaBancaria (String numeroConta, String nomeTitular, float saldo) {
+        this.numeroConta = numeroConta;
+        this.nomeTitular = nomeTitular;
+        this.saldo = saldo;
     }
 
     String getNumeroConta () {
         return numeroConta;
     }
 
-    float depositar () {
-        System.out.println(">> Depositando");
-        System.out.print("Quanto você deseja depositar? ");
-        float deposito = leitor.nextFloat();
+    String getNomeTitular () {
+        return nomeTitular;
+    }
 
-        return saldo = saldo + deposito;
+    float getSaldo () {
+        return saldo;
+    }
+
+    Scanner leitor = new Scanner(System.in);
+
+    float depositar (float saldo) {
+        System.out.print("Deseja fazer um depósito? (s/n): ");
+        String resposta1 = leitor.nextLine();
+
+        if (resposta1.equals("s") || resposta1.equals("S")) {
+            System.out.println(">> Depositando...");
+
+            System.out.print("Quanto você deseja depositar? ");
+            float quantiaDeposito = leitor.nextFloat();
+            leitor.nextLine();
+
+            return this.saldo += quantiaDeposito;   
+        } else {
+            return this.getSaldo();
+        }
     }
 
     float sacar () {
-        System.out.println(">> Sacando");
-        System.out.print("Quanto você deseja sacar? ");
-        float saque = leitor.nextFloat();
+        System.out.print("Deseja fazer um saque? (s/n): ");
+        String resposta2 = leitor.nextLine();
 
-        return saldo = saldo - saque;
+        if (resposta2.equals("s") || resposta2.equals("S")) {
+            System.out.println(">> Sacando...");
+
+            System.out.print("Quanto você deseja sacar? ");
+            float quantiaSaque = leitor.nextFloat();
+
+            return this.saldo -= quantiaSaque;
+        } else {
+            return this.getSaldo();
+        }
     }
 
     void retornarSaldo () {
-        System.out.println("Saldo: " + saldo);
+        System.out.println("" + this.getSaldo());
     }
 }
