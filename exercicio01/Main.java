@@ -7,7 +7,8 @@ public class Main {
         String resposta;
 
         do {
-        
+            System.out.println(">> Realizando novo cálculo...");
+
             System.out.print("Digite o valor do primeiro número: ");
             float numero_1 = leitor.nextInt();
 
@@ -17,16 +18,13 @@ public class Main {
 
             System.out.print("Escolha a operação desejada (+, -, *, /): ");
             String operacao = leitor.nextLine();
-
-            Calculadora calculo = new Calculadora(numero_1, numero_2, operacao);
-    
-            System.out.println("Número 1: " + calculo.getNumero1());
-            System.out.println("Número 2: " + calculo.getNumero2());
-            System.out.println("" + calculo.getNumero1() + " " + calculo.getOperacao() + " " + calculo.getNumero2() + " = " + calculo.calcularOperacao());
             
-            System.out.print("Deseja fazer outra operação? (s/n): ");
+            Calculadora.mostrarResultado(numero_1, numero_2, operacao);
+            
+            System.out.print("Deseja continuar usando a calculadora? (s/n): ");
             resposta = leitor.nextLine();
-            
         } while (!resposta.equals("n") && !resposta.equals("N"));
+
+        System.out.println(">> Saindo da calculadora...");
     }
 }
