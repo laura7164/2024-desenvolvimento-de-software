@@ -5,42 +5,40 @@ public class Main {
     public static void main(String[] args) {
         
         Scanner leitor = new Scanner(System.in);
-        List<ContaBancaria> teste = new ArrayList<ContaBancaria>();
+        List<ContaBancaria> banco = new ArrayList<ContaBancaria>();
 
         String resposta;
-        String deposito;
-        String saque;
 
         do {
-            ContaBancaria conta = new ContaBancaria();
-            conta.lerDados();
+            System.out.println(">> Armazenando conta nova");
 
-            System.out.print("Deseja depositar? (s/n): ");
-            deposito = leitor.nextLine();
+            System.out.print("Digite o número da conta: ");
+            String numeroConta = leitor.nextLine();
 
-            if (deposito.equals("s") || deposito.equals("S")) {
-                conta.depositar();
-            }
+            System.out.print("Digite o nome do titular: ");
+            String nomeTitular = leitor.nextLine();
 
-            System.out.print("Deseja sacar? (s/n): ");
-            saque = leitor.nextLine();
+            System.out.print("Digite o saldo da conta: ");
+            float saldo = leitor.nextFloat();
 
-            if (saque.equals("s") || saque.equals("S")) {
-                conta.sacar();
-            }
+            ContaBancaria conta = new ContaBancaria(numeroConta, nomeTitular, saldo);
 
-            System.out.print("Deseja continuar armazenado? (s/n): ");
-            resposta = leitor.nextLine();
+            banco.add(conta);
 
-            teste.add(conta);
+            conta.depositar(saldo);
+        
+            conta.sacar();
             
+            leitor.nextLine();
+            System.out.print("Deseja armazenar uma nova conta? (s/n): ");
+            resposta = leitor.nextLine();
         } while (!resposta.equals("n") && !resposta.equals("N"));
 
-        for (int i = 0; i < teste.size(); i++) {
+        for (int i = 0; i < banco.size(); i++) {
             System.out.println("---------------------");
-            System.out.println("Conta (" + (i + 1) + "):");
-            teste.get(i).retornarSaldo();
-            //teste.get(i) -> retorna o objeto ContaBancaria na posição i da lista teste
+            System.out.println("Saldo atual da conta (" + (i + 1) + "):");
+            banco.get(i).retornarSaldo();
+            //banco.get(i) -> retorna o objeto ContaBancaria na posição i da lista teste
             System.out.println("---------------------");
         }
     }
