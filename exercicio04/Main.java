@@ -8,25 +8,37 @@ public class Main {
         List<Jogador> jogadores = new ArrayList<Jogador>();
 
         String resposta;
-        Jogador novoJogador;
 
         do {
-            novoJogador = new Jogador();
-            novoJogador.lerDados();
+            System.out.println(">> Armazenando novo jogador");
+
+            System.out.print("Digite o nome do jogador: ");
+            String nome = leitor.nextLine();
+
+            System.out.print("Digite a pontuação do jogador: ");
+            float pontuacao = leitor.nextFloat();
+
+            System.out.print("Digite o nivel do jogador: ");
+            int nivel = leitor.nextInt();
+
+            Jogador novoJogador = new Jogador(nome, pontuacao, nivel);
+
             jogadores.add(novoJogador);
 
-            System.out.print("Deseja continuar armazenado? (s/n): ");
+            leitor.nextLine();
+            System.out.print("Deseja armazenar um novo jogador? (s/n): ");
             resposta = leitor.nextLine();
-            
         } while (!resposta.equals("n") && !resposta.equals("N"));
 
         int opcao;
 
         do {
+            System.out.println("################################");
             System.out.println("1. Aumentar pontuação do jogador");
             System.out.println("2. Aumentar nivel do jogador");
             System.out.println("3. Exibir informação do jogador");
             System.out.println("4. Sair");
+            System.out.println("################################");
             System.out.print("Escolha uma opção: ");
             opcao = leitor.nextInt();
 
