@@ -36,6 +36,8 @@ public class ContaBancaria {
             float quantiaDeposito = leitor.nextFloat();
             leitor.nextLine();
 
+            System.out.println(">> Depósito de R$" + quantiaDeposito + " feito");
+
             return this.saldo += quantiaDeposito;   
         } else {
             return this.getSaldo();
@@ -51,6 +53,8 @@ public class ContaBancaria {
 
             System.out.print("Quanto você deseja sacar? ");
             float quantiaSaque = leitor.nextFloat();
+
+            System.out.println(">> Saque de R$" + quantiaSaque + " feito");
 
             return this.saldo -= quantiaSaque;
         } else {
