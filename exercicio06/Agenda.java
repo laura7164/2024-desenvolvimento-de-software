@@ -40,4 +40,20 @@ public class Agenda {
         System.out.println("O contato buscado não existe.");
         return null;
     }
+
+    void removerContato () {
+        System.out.print("Digite o nome do contato que deseja remover: ");
+        String nomeBuscado = leitor.nextLine();
+
+        for (Contato contato: contatos) {
+            if (contato.getNome().equals(nomeBuscado)) {
+                contatos.remove(contato);
+                System.out.println(">> Removendo contato...");
+                System.out.println("Contato removido com sucesso.");
+                return;
+            }
+        }
+
+        System.out.println("Contato não encontrado.");
+    }
 }
